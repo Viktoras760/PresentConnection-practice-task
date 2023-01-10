@@ -27,102 +27,34 @@ namespace StudentAPI.Controllers
                     University = "Kaunas University of Technology"
                 }
         };
+        private readonly StudentDbContext _context;
+        public StudentsController(StudentDbContext dataContext)
+        {
+            _context = dataContext;
+        }
 
         [HttpGet]
-        public ActionResult<List<Student>> GetStudents()
+        public async Task<ActionResult<List<Student>>> GetStudents()
         {
             
-            return Ok(students);
+            return Ok(await _context.Students.ToListAsync());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Student> GetStudent(int id)
+        public async Task<ActionResult<Student>> GetStudentAsync(int id)
         {
-            var student = students.Find(h => h.Id == id);
+            var student = await _context.Students.FindAsync(id);
             if (student == null)
                 return BadRequest("Student not found.");
             return Ok(student);
         }
 
         [HttpPost]
-        public ActionResult<List<Student>> AddStudent(Student student)
+        public async Task<ActionResult<List<Student>>> AddStudent(Student student)
         {
-            students.Add(student);
-            return Ok(students);
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
+            return Ok(await _context.Students.ToListAsync());
         }
-        // GET: StudentsController
-        /*public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: StudentsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: StudentsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: StudentsController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StudentsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: StudentsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StudentsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: StudentsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
     }
 }
