@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import APIController from '../Controllers/APIController';
-import {Spinner, Button, Row, Col, Card, Form} from 'react-bootstrap';
+import {Button, Row, Col, Card, Form} from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function GetStudent() {
@@ -12,8 +12,6 @@ export default function GetStudent() {
     const [age, setAge] = useState();
     const [university, setUniversity] = useState();
 
-    const [isLoading, setLoading] = useState(false);
-
     const { id } = useParams();
 
     useEffect(() => {
@@ -21,26 +19,12 @@ export default function GetStudent() {
     })
 
     const getStudent = () => {
-        setLoading(true);
         http.get(`/Students/${id}`).then((res) => {
             setName(res.data.name);
             setLastName(res.data.lastName);
             setAge(res.data.age);
             setUniversity(res.data.university);
-        })/*.catch((error) => {
-            if(error.response.data.error != null) {
-                setErrorMessage(error.response.data.error);
-            } else if (error.response.data.errors != null) {
-                var errors = error.response.data.errors;
-                var all_errors = [];
-                Object.keys(errors).map((err) => (
-                    all_errors.push(errors[err][0])
-                ))
-                setErrorMessage(all_errors.join("\n"));
-            }
-        }).finally(() => {
-            setLoading(false);
-        });*/
+        })
     }
 
     const Back= async(e, id) => {

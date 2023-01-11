@@ -22,7 +22,7 @@ export default function AddStudent() {
         http.post(`/Students/`, { name: name, lastName: lastName, age: age, university: university }).then((res) => {
             sessionStorage.setItem('post-success', res.data.success);
             navigate('/students');
-        })/*.catch((error) => {
+        }).catch((error) => {
             if(error.response.data.error != null) {
                 setErrorMessage(error.response.data.error);
             } else if (error.response.data.errors != null) {
@@ -35,7 +35,7 @@ export default function AddStudent() {
             }
         }).finally(() => {
             setLoading(false);
-        });*/
+        });
     }
 
     function ErrorAlert({message}) {
