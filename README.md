@@ -1,6 +1,6 @@
 # StudentAPI
 
-### Pasirnkta tema: Studentų tvarkymas (Sąrašo peržiūra, Pasirinkto studento peržiūra ir Naujo studento pridėjimas).
+### Pasirinkta tema: Studentų tvarkymas (Sąrašo peržiūra, Pasirinkto studento peržiūra ir Naujo studento pridėjimas).
 
 #### Pasirinkta duomenų bazė: Microsoft SQL Server (pirmam paleidimui turėtų reikėti paleisti 'dotnet ef database update' komandą lokaliai duomenų bazei sukurti)
 
@@ -16,7 +16,7 @@
 ![image](https://user-images.githubusercontent.com/35394736/211796548-64229137-aa3a-44f6-9a2d-0d2d78bb6194.png)
 
 
-#Vartotojo sąsajos projektas:
+# Vartotojo sąsajos projektas:
 ### Pagrindinis puslapis (Home page):
 ![image](https://user-images.githubusercontent.com/35394736/211796959-566a33cf-e3c4-4d31-8a1f-e7c86d6d8212.png)
 ### Studentų sąrašo peržiūra (Student list):
