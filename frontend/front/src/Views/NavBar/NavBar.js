@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../Home';
+import StudentList from '../StudentList';
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
@@ -18,6 +19,9 @@ function Auth() {
                             <LinkContainer to="/">
                                 <Nav.Link>Home</Nav.Link>
                             </LinkContainer>
+                            <LinkContainer to="/students">
+                                <Nav.Link>Students</Nav.Link>
+                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -25,6 +29,7 @@ function Auth() {
             <Container>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/students" element={<StudentList />} />
                 </Routes>
             </Container>
         </>
