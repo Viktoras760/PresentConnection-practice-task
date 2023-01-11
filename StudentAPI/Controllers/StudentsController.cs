@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Web.Http.Cors;
 
 namespace StudentAPI.Controllers
 {
     [ApiController]
-    [EnableCors("*","*","*")]
     [Route("api/[controller]")]
     public class StudentsController : ControllerBase
     {
