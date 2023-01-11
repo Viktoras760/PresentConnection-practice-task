@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../Home';
 import StudentList from '../StudentList';
+import AddStudent from '../AddStudent';
+import GetStudent from '../Student';
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
@@ -30,6 +32,8 @@ function Auth() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/students" element={<StudentList />} />
+                    <Route path="/student" element={<AddStudent />} />
+                    <Route path="/students/:id" element={<GetStudent />} />
                 </Routes>
             </Container>
         </>
