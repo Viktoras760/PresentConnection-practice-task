@@ -1,0 +1,8 @@
+.page-buttons-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-buttons-container{
+    text-align: center;
+}

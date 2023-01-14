@@ -21,7 +21,7 @@ function Auth() {
                             <LinkContainer to="/">
                                 <Nav.Link>Home</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/students">
+                            <LinkContainer to="/students/page/1">
                                 <Nav.Link>Students</Nav.Link>
                             </LinkContainer>
                         </Nav>
@@ -31,7 +31,7 @@ function Auth() {
             <Container>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/students" element={<StudentList />} />
+                    <Route path="/students/page/:number" element={<StudentList />} />
                     <Route path="/student" element={<AddStudent />} />
                     <Route path="/students/:id" element={<GetStudent />} />
                 </Routes>

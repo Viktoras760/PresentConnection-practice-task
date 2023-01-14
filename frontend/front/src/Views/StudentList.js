@@ -1,20 +1,24 @@
 import React, {useEffect, useState} from "react";
 import APIController from '../Controllers/APIController';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import './Table.css';
 
 function StudentList() {
 
     const navigate = useNavigate();
     const { http } = APIController();
     const [Students, setStudents] = useState('');
+    const [pages, setPages] = useState(1);
+    const { number } = useParams();
 
     useEffect(() => {
         fetchStudents();
     });
 
     const fetchStudents= () => {
-        http.get('/Students/').then((res) => {
-            setStudents(res.data);
+        http.get(`/Students/page/${number}`).then((res) => {
+            setStudents(res.data.students);
+            setPages(res.data.pages);
         });
     };
 
@@ -24,6 +28,10 @@ function StudentList() {
 
     const addStudent= async(e, id) => {
       navigate(`/Student/`);
+  };
+
+  const handlePageChange= async( number) => {
+    navigate(`/Students/page/${number}`);
   };
 
     return (
@@ -71,7 +79,15 @@ function StudentList() {
                         </tr>
                       ))}
                     </tbody>
+                    
                   </table>
+                  <div className="page-buttons-container">
+                    {Array.from({length: pages}, (_, i) => (
+                    <button key={i} onClick={() => handlePageChange(i + 1)} disabled={i + 1 === number}>
+                    {i + 1}
+                    </button>
+                    ))}
+                    </div>
                 </div>
               </div>
             </div>
