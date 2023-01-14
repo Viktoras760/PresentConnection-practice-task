@@ -8,9 +8,5 @@ namespace StudentAPI.Data
 
         public DbSet<Student> Students { get; set; }
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(connectionString: "Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=StudentDb");
-        }*/
     }
 }
