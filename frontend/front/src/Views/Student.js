@@ -27,10 +27,6 @@ export default function GetStudent() {
         })
     }
 
-    const Back= async(e, id) => {
-        navigate(`/Students/`);
-    };
-
     return (
         <Row className="justify-content-center pt-5">
             <Col>
@@ -52,7 +48,7 @@ export default function GetStudent() {
                         <Form.Label>University</Form.Label>
                         <Form.Control readOnly type="text" value={university} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={Back}>
+                    <Button variant="primary" type="submit" onClick={() => navigate(-1)}>
                         { 'Return'}
                     </Button>
                 </Card>

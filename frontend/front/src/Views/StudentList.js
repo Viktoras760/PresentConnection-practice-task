@@ -7,9 +7,14 @@ function StudentList() {
 
     const navigate = useNavigate();
     const { http } = APIController();
+
     const [Students, setStudents] = useState('');
+
     const [pages, setPages] = useState(1);
     const { number } = useParams();
+
+    const [sortBy, setSortBy] = useState('');
+    const [sortOrder, setSortOrder] = useState('asc');
 
     useEffect(() => {
         fetchStudents();
@@ -17,6 +22,28 @@ function StudentList() {
 
     const fetchStudents= () => {
         http.get(`/Students/page/${number}`).then((res) => {
+          const students = res.data.students;
+          if (sortBy !== '') {
+              students.sort((a, b) => {
+                  if (sortOrder === 'asc') {
+                    if (a[sortBy] < b[sortBy]) {
+                      return -1;
+                    }
+                    if (a[sortBy] > b[sortBy]) {
+                      return 1;
+                    }
+                    return 0;
+                  } else {
+                    if (a[sortBy] > b[sortBy]) {
+                      return -1;
+                    }
+                    if (a[sortBy] < b[sortBy]) {
+                      return 1;
+                    }
+                    return 0;
+                  }
+              });
+          }
             setStudents(res.data.students);
             setPages(res.data.pages);
         });
@@ -32,6 +59,16 @@ function StudentList() {
 
   const handlePageChange= async( number) => {
     navigate(`/Students/page/${number}`);
+  };
+
+  const handleSort = (column) => {
+    console.log("working");
+    if(sortBy === column) {
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    }else{
+        setSortBy(column);
+        setSortOrder('asc');
+    }
   };
 
     return (
@@ -54,15 +91,15 @@ function StudentList() {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">University</th>
-                        <th scope="col"></th>
+                        <th onClick={() => handleSort('name')}>Name</th>
+                        <th onClick={() => handleSort('lastName')}>Last name</th>
+                        <th onClick={() => handleSort('age')}>Age</th>
+                        <th onClick={() => handleSort('university')}>University</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {Object.entries(Students).map(([key, val]) => (
+                      {Object.entries(Students).sort((a,b) => (sortOrder === 'asc' ? a[sortBy] > b[sortBy] : b[sortBy] > a[sortBy])).map(([key, val]) => (
                         <tr key={val.id}>
                           <th scope="row">{val.name}</th>
                           <th scope="row">{val.lastName}</th>
