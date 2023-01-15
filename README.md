@@ -4,6 +4,11 @@
 
 #### Pasirinkta duomenų bazė: Microsoft SQL Server (pirmam paleidimui turėtų reikėti paleisti 'dotnet ef database update' komandą lokaliai duomenų bazei sukurti)
 
+### Extra reikalavimų pastabos:
+Filtravimas realizuotas po puslapiavimo (filtruojasi tik atidaryto puslapio įrašai)
+Rikiavimas realizuotas tik frontend dalyje (paspaudus ant stulpelio pavadinimo). Pasirinkto rikiavimui stulpelio pavadinimas yra pabraukiamas. Paspaudus rikiuoti jau pasirinktą stulpelį rikiavimas pakeičia tvarką (jeigu buvo didėjimo tvarka - pasikeis į mažėjimo)
+
+
 # API projektas (Swaggerio atvaizdavimas):
 ## API endpointai:
 ![image](https://user-images.githubusercontent.com/35394736/212547054-81b16920-bf4b-4f28-9eca-271090c1cf7f.png)
