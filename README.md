@@ -30,6 +30,8 @@ Rikiavimas realizuotas tik frontend dalyje (paspaudus ant stulpelio pavadinimo).
 ![image](https://user-images.githubusercontent.com/35394736/211796959-566a33cf-e3c4-4d31-8a1f-e7c86d6d8212.png)
 ### Studentų sąrašo peržiūra (Student list):
 ![image](https://user-images.githubusercontent.com/35394736/212547399-e9628f35-13cb-49ed-9e2f-d0519c938bcc.png)
+### Studentų sąrašas surikiuotas pagal pavardes:
+![image](https://user-images.githubusercontent.com/35394736/212548146-9308ecbd-9898-40f3-9127-d1cc8c2cacdc.png)
 ### Pasirinkto studento informacijos peržiūra (Student info):
 ![image](https://user-images.githubusercontent.com/35394736/211797722-93a31ca3-dfd8-4d7d-86c3-f4a411c28c18.png)
 (Visi laukai yra readonly, kadangi tai yra tik peržiūra)
