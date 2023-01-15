@@ -6,3 +6,21 @@
   .page-buttons-container{
     text-align: center;
 }
+
+.sorted {
+  font-weight: bold;
+  text-decoration: underline cyan 2px;
+}
+.ascending::after {
+  content: "▲";
+  margin-left: 5px;
+}
+.descending::after {
+  content: "▼";
+  margin-left: 5px;
+}
+
+.filter {
+  position:relative; 
+  left:900px;
+}
