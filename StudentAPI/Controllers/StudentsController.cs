@@ -74,7 +74,7 @@ namespace StudentAPI.Controllers
             //Filtering students
             if (filter != null)
             {
-                students = students.Where(s => s.Name.Contains(filter) || s.LastName.Contains(filter) || s.Age.ToString().Contains(filter) || s.University.Contains(filter)).ToList();
+                students = students.Where(s => s.Name.Contains(filter) || s.LastName.Contains(filter) || s.Age.ToString().Contains(filter.ToString()) || s.University.Contains(filter)).ToList();
             }
 
             var response = new StudentResponse
